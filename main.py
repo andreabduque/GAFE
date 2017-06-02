@@ -5,7 +5,7 @@ def testFib():
     functionalExp = FE()
     att = np.array([1,2,3])
 
-    for fe in ["PW", "TR", "BO", "FI"]:
+    for fe in ["PW", "TR", "BO", "FI", "CH1", "CH2", "LU"]:
         for es in range(1,8):
             print("func exp " + fe + " size " + str(es))
             print(functionalExp.eval(fe, es, att))
