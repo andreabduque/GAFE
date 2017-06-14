@@ -11,24 +11,17 @@ def testIris():
     iris = pd.read_csv("iris.data", sep=",")
     irisAtts = iris.drop("class", 1)
 
-    #Expanding data
-    newIris = None
-    for att in irisAtts.as_matrix().T:
-        if(newIris is not None):
-            newIris = np.c_[newIris, functionalExp.eval("PW", 2, att)]
-        else:
-            newIris = functionalExp.eval("PW", 2, att)
+    print(functionalExp.expandMatrix(irisAtts.as_matrix(), [(1,1), (1,1), (1,1), (1,1)]))
 
 
-
-def testFib():
-    functionalExp = FE()
-    att = np.array([1,2,3])
-
-    for fe in ["PW", "TR", "BO", "FI", "CH1", "CH2", "LU"]:
-        for es in range(1,8):
-            print("func exp " + fe + " size " + str(es))
-            print(functionalExp.eval(fe, es, att))
+# def testFib():
+#     functionalExp = FE()
+#     att = np.array([1,2,3])
+#
+#     for fe in ["PW", "TR", "BO", "FI", "CH1", "CH2", "LU"]:
+#         for es in range(1,8):
+#             print("func exp " + fe + " size " + str(es))
+#             print(functionalExp.eval(fe, es, att))
 
 def main():
     # testFib()
