@@ -25,7 +25,7 @@ class FE:
         elif(feType == "LU"):
             fe = {1:[1,0], 2:[1,0,2], 3:[0,1,3,0], 4:[1,0,4,0,2], 5:[1,0,5,0,5,0], 6:[1,0,6,0,9,0,2], 7:[1,0,7,0,14,0,7,0]}
         else:
-            raise NotImplementedError("Functional Expansion not available. Choose between PW or TR")
+            raise NotImplementedError("Functional Expansion not available. Choose between PW, TR, BO, FO, CH1, CH2 or LU")
 
         return self.apply(fe, es, att, trig)
 
