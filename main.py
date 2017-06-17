@@ -14,14 +14,18 @@ def testIris():
     scaledIris = MinMaxScaler().fit_transform(irisAtts)
     data_pw_5 = functionalExp.expandMatrix(scaledIris, [(1,5) for x in range(4)])
     data_bo_2 = functionalExp.expandMatrix(scaledIris, [(3,2) for x in range(4)])
+    data_lu_4 = functionalExp.expandMatrix(scaledIris, [(7,4) for x in range(4)])
 
     model = Classifier(target, 10, 4)
 
-    print("original 1nn " + str(model.knn(1, irisAtts)))
-    print("expansao 1nn " + str(model.knn(1, data_pw_5)))
+    print("original 1nn " + str(model.knn(irisAtts)))
+    print("expansao 1nn " + str(model.knn(data_pw_5)))
 
     print("original cart " + str(model.cart(irisAtts)))
     print("expansao cart " + str(model.cart(data_bo_2)))
+
+    print("original svm " + str(model.svm(irisAtts)))
+    print("expansao svm " + str(model.svm(data_lu_4)))
 
     # print(functionalExp.expandMatrix(irisAtts.as_matrix(), [(1,1), (1,1), (1,1), (1,1)]))
 
