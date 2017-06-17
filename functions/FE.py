@@ -6,7 +6,7 @@ from enum import Enum
 class FEtype(Enum):
     PW = 1
     TR = 2
-    B0 = 3
+    BO = 3
     FI = 4
     CH1 = 5
     CH2 = 6
@@ -17,9 +17,9 @@ class FE:
     #and receives an attribute from a dataset in numpy array format
     def eval(self, feType, es, att):
         if(es > 7 and es < 1):
-            raise NotImplementedError("Choose a value between 1 and 7 for es")
+            raise TypeError("Choose a value between 1 and 7 for es")
         trig = None
-        print(feType)
+
         if(feType == FEtype.PW):
             fe = {1:[1], 2:[1, 0], 3:[1,0,0], 4:[1,0,0,0], 5:[1,0,0,0,0], 6:[1,0,0,0,0,0], 7:[1,0,0,0,0,0,0] }
         elif(feType == FEtype.TR):
@@ -36,7 +36,7 @@ class FE:
         elif(feType == FEtype.LU):
             fe = {1:[1,0], 2:[1,0,2], 3:[0,1,3,0], 4:[1,0,4,0,2], 5:[1,0,5,0,5,0], 6:[1,0,6,0,9,0,2], 7:[1,0,7,0,14,0,7,0]}
         else:
-            raise NotImplementedError("Functional Expansion not available. Choose between PW, TR, BO, FO, CH1, CH2 or LU")
+            raise TypeError("Functional Expansion not available. Choose between PW, TR, BO, FO, CH1, CH2 or LU")
 
         return self.apply(fe, es, att, trig)
 
