@@ -6,5 +6,5 @@ This [paper](http://www.sciencedirect.com/science/article/pii/S0167865517300351)
 
 GAFE depends on the python packages Numpy, Pandas, Scikit-Learn and DEAP.
 
-Tutorial notebook [here](https://github.com/andreabduque/GAFE/blob/master/notebooks/GAFE%20tutorial.ipynb).
-For using notebooks, install Jupyter Notebook.
+Tutorial notebook [here](https://github.com/andreabduque/GAFE/blob/master/GAFE%20tutorial.ipynb).
+Open it using Jupyter Notebook.

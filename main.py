@@ -27,7 +27,6 @@ def testIris():
         print("gafe " + cl + " " + str(avg) )
 
 def main():
-    # testFib()
     testIris()
 
 if __name__ == "__main__":
