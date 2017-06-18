@@ -3,6 +3,7 @@ from fitness import Classifier
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 import pandas as pd
+import ga
 
 def testIris():
     functionalExp = FE()
@@ -13,19 +14,23 @@ def testIris():
     #Scale to [0,1] before expanding
     scaledIris = MinMaxScaler().fit_transform(irisAtts)
     data_pw_5 = functionalExp.expandMatrix(scaledIris, [(1,5) for x in range(4)])
-    data_bo_2 = functionalExp.expandMatrix(scaledIris, [(3,2) for x in range(4)])
-    data_lu_4 = functionalExp.expandMatrix(scaledIris, [(7,4) for x in range(4)])
+    # data_bo_2 = functionalExp.expandMatrix(scaledIris, [(3,2) for x in range(4)])
+    # data_lu_4 = functionalExp.expandMatrix(scaledIris, [(7,4) for x in range(4)])
 
-    model = Classifier(target, 10, 4)
+    model = Classifier('knn', target, folds=10, jobs=6)
+    gafe = ga.GAFE(model, scaledIris, target, scaled=True)
+    print("original 1nn " + str(model.getAccuracy(irisAtts)))
+    print("expansao 1nn " + str(model.getAccuracy(data_pw_5)))
+    avg, bestPair = gafe.runGAFE(n_population=21, n_iter=1, verbose=True)
+    print("gafe 1nn " +  str(avg))
+    print("best pair ")
+    print(bestPair)
 
-    print("original 1nn " + str(model.knn(irisAtts)))
-    print("expansao 1nn " + str(model.knn(data_pw_5)))
-
-    print("original cart " + str(model.cart(irisAtts)))
-    print("expansao cart " + str(model.cart(data_bo_2)))
-
-    print("original svm " + str(model.svm(irisAtts)))
-    print("expansao svm " + str(model.svm(data_lu_4)))
+    # print("original cart " + str(model.cart(irisAtts)))
+    # print("expansao cart " + str(model.cart(data_bo_2)))
+    #
+    # print("original svm " + str(model.svm(irisAtts)))
+    # print("expansao svm " + str(model.svm(data_lu_4)))
 
     # print(functionalExp.expandMatrix(irisAtts.as_matrix(), [(1,1), (1,1), (1,1), (1,1)]))
 
